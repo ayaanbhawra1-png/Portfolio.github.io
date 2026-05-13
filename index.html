@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Maaz Javed Khan | CS Student & UI/UX Designer</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #F9F6F0;
+      color: #2C2418;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* warm earth tone theme: terracotta + sage */
+    :root {
+      --primary: #C17A5D;
+      --primary-dark: #A55A3E;
+      --primary-light: #F1DBCE;
+      --secondary: #5A7D6B;
+      --accent: #D9A77A;
+      --bg-light: #FEFAF5;
+      --card-white: #FFFFFF;
+      --text-dark: #2C2418;
+      --text-muted: #5C5243;
+      --border-light: #E8DFD3;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid #EBE2D6;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      display: inline-block;
+      background: linear-gradient(135deg, #2C2418 0%, #C17A5D 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      border-left: 5px solid #C17A5D;
+      padding-left: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: #C17A5D;
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(193,122,93,0.25);
+    }
+    .btn-primary:hover {
+      background: #A55A3E;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #C17A5D;
+      color: #C17A5D;
+    }
+    .btn-outline:hover {
+      background: #FDF3EC;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #FEFAF5 0%, #FDF3EC 100%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text { flex: 1; }
+    .hero-badge {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #C17A5D;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero-text h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin: 0.5rem 0 1rem;
+      color: #2C2418;
+    }
+    .highlight { color: #C17A5D; }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #5C5243;
+      margin: 1.2rem 0;
+      border-left: 3px solid #C17A5D;
+      padding-left: 20px;
+    }
+    .hero-intro {
+      color: #6B5E4F;
+      max-width: 550px;
+      margin: 1.5rem 0 2rem;
+      font-size: 1rem;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .profile-pic {
+      flex: 0.7;
+      min-width: 240px;
+      text-align: center;
+    }
+    .profile-pic img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 65% 35% 60% 40% / 45% 50% 50% 55%;
+      background: #FFFFFF;
+      padding: 4px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+      border: 1px solid #EBE0D3;
+    }
+
+    .card-light {
+      background: #FFFFFF;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+      border: 1px solid #EBE2D6;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 24px;
+    }
+    .skill-category {
+      background: #FFFFFF;
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid #EBE2D6;
+    }
+    .skill-category h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #C17A5D;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-tags span {
+      background: #F5EFE8;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #3E3324;
+    }
+
+    .exp-item {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 28px;
+      border-left: 5px solid #C17A5D;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      margin-bottom: 24px;
+      border: 1px solid #EBE2D6;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .project-card {
+      background: #FFFFFF;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      border: 1px solid #EBE2D6;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #D9C5B3;
+      box-shadow: 0 20px 25px -12px rgba(193,122,93,0.12);
+    }
+    .project-img {
+      height: 160px;
+      background: linear-gradient(135deg, #FDF3EC, #FFFFFF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #C17A5D;
+      border-bottom: 1px solid #F0E7DD;
+    }
+    .project-info {
+      padding: 24px;
+    }
+    .project-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .project-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .project-links a {
+      background: #F5EFE8;
+      color: #3E3324;
+      text-decoration: none;
+      font-size: 0.75rem;
+      padding: 6px 14px;
+      border-radius: 40px;
+      transition: 0.2s;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .project-links a:hover {
+      background: #C17A5D;
+      color: white;
+    }
+    .case-study {
+      background: #FFFFFF;
+      border-radius: 32px;
+      padding: 32px;
+      margin-top: 24px;
+      border: 1px solid #EBE2D6;
+    }
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      justify-content: space-between;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .social-links {
+      display: flex;
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .social-links a {
+      background: #F5EFE8;
+      width: 44px;
+      height: 44px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: 0.2s;
+      color: #C17A5D;
+    }
+    .social-links a:hover {
+      background: #C17A5D;
+      color: white;
+      transform: translateY(-3px);
+    }
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      color: #8F7E6A;
+      font-size: 0.8rem;
+      background: #FEFAF5;
+      border-top: 1px solid #EBE2D6;
+    }
+    @media (max-width: 780px) {
+      .hero-text h1 { font-size: 2.5rem; }
+      .container { padding: 0 20px; }
+      section { padding: 55px 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    .floating-social {
+      position: fixed;
+      right: 22px;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 99;
+    }
+    .floating-social a {
+      background: #FFFFFF;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: 0.2s;
+      color: #C17A5D;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #EBE2D6;
+    }
+    .floating-social a:hover {
+      background: #C17A5D;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="floating-social">
+  <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">✦ COMPUTER SCIENCE STUDENT & DESIGNER</div>
+      <h1>Maaz <span class="highlight">Javed Khan</span><br>UI/UX & Web Enthusiast</h1>
+      <div class="hero-sub">Building thoughtful digital experiences — from wireframes to fully responsive websites.</div>
+      <div class="hero-intro">Computer Science student with a passion for UI/UX design, front-end development, and problem-solving. Experienced in Figma, Flutter, WordPress, and collaborative projects.</div>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        <a href="#" class="btn btn-outline" id="resumeLinkBtn"><i class="fas fa-download"></i> Download Resume</a>
+      </div>
+    </div>
+    <div class="profile-pic">
+      <img src="https://placehold.co/400x400/F5EFE8/C17A5D?text=Maaz+K." alt="Maaz Javed Khan">
+    </div>
+  </div>
+</section>
+
+<!-- About Me -->
+<section>
+  <div class="container">
+    <h2>About Me</h2>
+    <div style="max-width: 800px; font-size: 1rem; color: #4A3F31; line-height: 1.6;">
+      <p>I am a Computer Science student with a deep curiosity for software development and user-centric design. I enjoy turning ideas into clean interfaces and interactive applications. My technical foundation in C++, Python, and SQL complements my design mindset, allowing me to build functional and engaging digital products.</p>
+      <p style="margin-top: 1rem;">Alongside academics, I've worked on real-world UI/UX projects at Think Monk and MCM BPO. I believe that great design bridges the gap between users and technology.</p>
+      <p style="margin-top: 1rem; font-weight: 500;">Looking for internship opportunities where I can apply problem-solving, clean UI, and front-end skills to build meaningful tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section>
+  <div class="container">
+    <h2>Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-category"><h3>💻 Programming</h3><div class="skill-tags"><span>C++</span><span>Python</span><span>SQL</span><span>JavaScript</span></div></div>
+      <div class="skill-category"><h3>🎨 Design & UI</h3><div class="skill-tags"><span>Figma</span><span>UI/UX</span><span>Wireframing</span><span>Flutter</span><span>WordPress</span></div></div>
+      <div class="skill-category"><h3>🔧 Dev Tools</h3><div class="skill-tags"><span>JupyterLite</span><span>RStudio</span><span>VS Code</span><span>Git</span></div></div>
+      <div class="skill-category"><h3>💡 Soft Skills</h3><div class="skill-tags"><span>Teamwork</span><span>Communication</span><span>Problem Solving</span><span>Documentation</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section>
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="exp-item">
+      <h3 style="color:#C17A5D;">UI/UX Design Intern</h3>
+      <p style="font-weight:500;">Think Monk – Teach Us Project | Internship</p>
+      <ul style="margin-top: 12px; margin-left: 20px; color:#5C5243;">
+        <li>Conducted user surveys and requirement gathering for educational platform.</li>
+        <li>Participated in design discussions and project documentation.</li>
+        <li>Assisted in UI improvements and layout structuring using Figma & Flutter concepts.</li>
+      </ul>
+      <div class="skill-tags" style="margin-top: 16px;"><span>Figma</span><span>User Research</span><span>Flutter UI</span><span>Documentation</span></div>
+    </div>
+    <div class="exp-item">
+      <h3 style="color:#C17A5D;">UI/UX Designer & WordPress Developer</h3>
+      <p style="font-weight:500;">MCM BPO PVT. LTD.</p>
+      <ul style="margin-top: 12px; margin-left: 20px; color:#5C5243;">
+        <li>Designed user-friendly interfaces and wireframes in Figma.</li>
+        <li>Developed and managed responsive WordPress websites with performance optimization.</li>
+        <li>Ensured brand consistency and usability across web assets.</li>
+      </ul>
+      <div class="skill-tags" style="margin-top: 16px;"><span>WordPress</span><span>Figma</span><span>Responsive Design</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Projects -->
+<section id="projects">
+  <div class="container">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <!-- TeachUs Placement Cell Portal -->
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-briefcase"></i></div>
+        <div class="project-info">
+          <h3>TeachUs – Placement Cell Portal</h3>
+          <p>Mobile-first placement management system designed in Figma. Role-based dashboards (Admin, Student, Recruiter) and Flutter-ready UI components for seamless developer handoff.</p>
+          <div class="skill-tags" style="margin: 10px 0;"><span>Figma</span><span>Flutter UI</span><span>Design System</span><span>Prototyping</span></div>
+          <div class="project-links">
+            <a href="#" class="figma-highlight" target="_blank"><i class="fab fa-figma"></i> Figma Prototype</a>
+            <a href="#" class="report-highlight" target="_blank"><i class="fas fa-file-alt"></i> Case Study</a>
+          </div>
+        </div>
+      </div>
+      <!-- MCM BPO – Event Banners & Websites (updated title) -->
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-calendar-alt"></i></div>
+        <div class="project-info">
+          <h3>MCM BPO – Event Banners & Websites</h3>
+          <p>Designed professional conference banners for GCCM Europe 2026 and responsive corporate websites. Modern layouts highlighting AI-powered communication solutions and carrier-grade services.</p>
+          <div class="skill-tags" style="margin: 10px 0;"><span>Figma</span><span>Banner Design</span><span>WordPress</span><span>Responsive Web</span></div>
+          <div class="project-links">
+            <a href="#" class="report-highlight" target="_blank"><i class="fas fa-images"></i> View Gallery</a>
+            <a href="#" class="report-highlight" target="_blank"><i class="fas fa-file-alt"></i> Design Report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Case Study (Teach Us Placement Portal Deep Dive) -->
+<section>
+  <div class="container">
+    <h2>Case Study</h2>
+    <div class="case-study">
+      <h3 style="font-size: 1.6rem; color:#C17A5D;">📘 TeachUs – Placement Cell Portal (Figma + Flutter)</h3>
+      <p style="margin: 8px 0 12px; color:#5C5243;">Think Monk Internship | UX Research, Mobile-first Design, Flutter-ready components</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 18px 0;">
+        <div style="flex:1;"><strong>🔍 Problem</strong><br>Placement cells rely on scattered spreadsheets and emails — inefficient for students, TPO and recruiters.</div>
+        <div style="flex:1;"><strong>📝 Role & Process</strong><br>Created user flows, low-fidelity wireframes, and high-fidelity mockups in Figma. Designed components with Flutter in mind (widget-friendly).</div>
+      </div>
+      <div><strong>🎯 Outcome</strong> – Deliverables included a full interactive prototype with role-based dashboards (student job search, recruiter posting, admin policy controls). The design system is ready for Flutter implementation.</div>
+      <div class="project-links" style="margin-top: 24px;">
+        <a href="#" class="figma-highlight" target="_blank"><i class="fab fa-figma"></i> View Figma Prototype</a>
+        <a href="#" class="report-highlight" target="_blank"><i class="fas fa-file-alt"></i> Full Project Report</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Hire Me -->
+<section>
+  <div class="container">
+    <h2>Why Work With Me?</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 28px; margin-top: 28px;">
+      <div class="card-light" style="text-align: center;"><i class="fas fa-code" style="font-size: 2rem; color:#C17A5D;"></i><h3 style="margin:12px 0">Dev + Design</h3><p>From logic to layout — I speak both languages.</p></div>
+      <div class="card-light" style="text-align: center;"><i class="fas fa-mobile-alt" style="font-size: 2rem; color:#C17A5D;"></i><h3 style="margin:12px 0">Responsive Mindset</h3><p>Mobile-first, user-focused designs.</p></div>
+      <div class="card-light" style="text-align: center;"><i class="fab fa-figma" style="font-size: 2rem; color:#C17A5D;"></i><h3 style="margin:12px 0">Figma + Flutter</h3><p>Design systems that translate to code.</p></div>
+      <div class="card-light" style="text-align: center;"><i class="fas fa-users" style="font-size: 2rem; color:#C17A5D;"></i><h3 style="margin:12px 0">Collaborative</h3><p>Team player with clear documentation habits.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section>
+  <div class="container">
+    <h2>Education</h2>
+    <div class="exp-item"><h3>🎓 Bachelor of Science (Computer Science)</h3><p>Bhavan's College, Mumbai | Present</p></div>
+    <div class="exp-item"><h3>📖 Higher Secondary Certificate (HSC)</h3><p>Bhavan's College, Mumbai</p></div>
+    <div class="exp-item"><h3>🏫 Secondary School Certificate (SSC)</h3><p>Marol Municipal Urdu High School, Mumbai</p></div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <h2>Let's Connect</h2>
+    <div class="contact-flex">
+      <div class="contact-info">
+        <div class="contact-detail"><i class="fas fa-envelope" style="font-size: 1.5rem; color:#C17A5D;"></i> <span>maazkhannn18@gmail.com</span></div>
+        <div class="contact-detail"><i class="fas fa-phone-alt" style="font-size: 1.5rem; color:#C17A5D;"></i> <span>+91 81691 88117</span></div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+      <div style="flex:1; background:#FEFAF5; padding: 28px; border-radius: 32px; border:1px solid #EBE2D6;">
+        <p style="font-size: 1.3rem; font-weight: 500; color:#2C2418;">✨ Let's build intuitive, human-friendly digital products.</p>
+        <p style="margin-top: 16px; color:#5C5243;">Seeking internship/full-time opportunities in software development, UI/UX, or front-end roles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2026 Maaz Javed Khan — CS Student & UI/UX Designer.</div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
